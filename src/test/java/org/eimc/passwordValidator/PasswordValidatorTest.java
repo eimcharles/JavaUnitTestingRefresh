@@ -34,4 +34,18 @@ public class PasswordValidatorTest {
         assertThat(actualPassword).isFalse();
     }
 
+    @Test
+    void willFailIfPasswordDoesNotMeetMinimumLengthRequiredAfterTrimming(){
+
+        // GIVEN
+        String testPassword = "  pass";
+
+        // WHEN
+        var actualPassword = passwordValidatorTest.test(testPassword);
+
+        // THEN
+        assertThat(actualPassword).isFalse();
+    }
+
+
 }
