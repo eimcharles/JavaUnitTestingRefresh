@@ -1,6 +1,8 @@
 package org.eimc.passwordValidator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -71,6 +73,30 @@ public class PasswordValidatorTest {
 
         // THEN
         assertThat(actualPassword).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+
+            {
+                    "pas, false",
+                    "@, false",
+                    "3, false",
+                    "password!, false",
+                    "password, false",
+
+                    "password1!, true",
+                    "5password@, true",
+                    "pass4word&, true",
+            }
+    )
+    void canValidatePasswordCharacters(String testPassword, boolean expected){
+
+        // WHEN
+        var actualPassword = passwordValidatorTest.test(testPassword);
+
+        // THEN
+        assertThat(actualPassword).isEqualTo(expected);
     }
 
 
