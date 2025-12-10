@@ -60,5 +60,18 @@ public class PasswordValidatorTest {
         assertThat(actualPassword).isFalse();
     }
 
+    @Test
+    void willFailIfPasswordDoesNotContainAtLeastOneDigitSpecialCharacter(){
+
+        // GIVEN
+        String testPassword = "password";
+
+        // WHEN
+        var actualPassword = passwordValidatorTest.test(testPassword);
+
+        // THEN
+        assertThat(actualPassword).isFalse();
+    }
+
 
 }
