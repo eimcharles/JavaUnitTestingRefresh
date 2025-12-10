@@ -16,6 +16,20 @@ public class PasswordValidatorTest {
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
+
+        // THEN
+        assertThat(actualPassword).isFalse();
+    }
+
+    @Test
+    void willFailIfPasswordIsEmpty(){
+
+        // GIVEN
+        String testPassword = "  ";
+
+        // WHEN
+        var actualPassword = passwordValidatorTest.test(testPassword);
+
         // THEN
         assertThat(actualPassword).isFalse();
     }
