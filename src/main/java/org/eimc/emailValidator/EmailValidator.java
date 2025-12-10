@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class EmailValidator implements Predicate<String> {
 
-    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9+_-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$");
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
 
     /**
      *      Checks if the email is non-null
