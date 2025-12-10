@@ -15,7 +15,7 @@ public class PasswordValidator implements Predicate<String> {
 
         password = password.trim();
 
-        if (password.length() > MIN_PASSWORD_CHAR_LENGTH){
+        if (password.length() < MIN_PASSWORD_CHAR_LENGTH){
             return false;
         }
 
