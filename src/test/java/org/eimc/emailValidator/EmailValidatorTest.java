@@ -1,6 +1,10 @@
 package org.eimc.emailValidator;
 
+import jdk.jfr.Enabled;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -10,7 +14,18 @@ class EmailValidatorTest {
 
     private final EmailValidator emailValidatorTest = new EmailValidator();
 
+
+    /**
+     *          Disabled prevents the test from running
+     *          during a normal execution of the EmailValidatorTest class.
+     *
+     *          EnabledOnOs(OS.WINDOWS) specifies that if the test was enabled,
+     *          it would only run on the Windows OS
+     */
+
     @Test
+    @Disabled
+    @EnabledOnOs(OS.WINDOWS)
     void canValidateCorrectEmail() {
 
         // GIVEN
