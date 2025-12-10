@@ -47,5 +47,18 @@ public class PasswordValidatorTest {
         assertThat(actualPassword).isFalse();
     }
 
+    @Test
+    void willFailIfPasswordDoesNotContainAtLeastOneDigit(){
+
+        // GIVEN
+        String testPassword = "password";
+
+        // WHEN
+        var actualPassword = passwordValidatorTest.test(testPassword);
+
+        // THEN
+        assertThat(actualPassword).isFalse();
+    }
+
 
 }

@@ -19,6 +19,11 @@ public class PasswordValidator implements Predicate<String> {
             return false;
         }
 
+        // Must contain at least one digit
+        if (!password.matches(".*\\d.*")){
+            return false;
+        }
+
         return true;
     }
 }
