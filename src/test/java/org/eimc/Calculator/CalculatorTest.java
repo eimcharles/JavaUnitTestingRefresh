@@ -56,7 +56,7 @@ public class CalculatorTest {
         // 2 - WHEN
         var actualResult = calculatorUnderTest.add(number1,number2);
 
-        // 3 - THEN (AsserJ)
+        // 3 - THEN (AssertJ)
         assertThat(actualResult).isEqualTo(expectedResult);
 
     }
