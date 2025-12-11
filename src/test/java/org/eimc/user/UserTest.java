@@ -20,8 +20,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class UserTest {
 
-    User actualTestUser;
-    UUID actualTestUserId;
+    private User actualTestUser;
+    private UUID actualTestUserId;
 
     @BeforeEach
     void setUp(){
@@ -79,7 +79,7 @@ public class UserTest {
         int expectedTestUserCopyHashCode = expectedTestUserCopy.hashCode();
 
         // THEN
-        assertThat(actualTestUserHashCode).as("If users are equal, their hash codes must be equal")
+        assertThat(actualTestUserHashCode).as("If Users are equal, their hash codes must be equal")
                 .isEqualTo(expectedTestUserCopyHashCode);
     }
 
