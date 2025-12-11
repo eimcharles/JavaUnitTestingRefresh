@@ -9,27 +9,23 @@ import java.util.Objects;
 
 public class Car {
 
-    private String registrationNumber;
+    private final String registrationNumber;
     private BigDecimal rentalPricePerDay;
-    private Brand manufacturer;
+    private Brand brand;
     private FuelType fuelType;
     private boolean isBooked;
 
 
-    public Car(String registrationNumber, BigDecimal rentalPricePerDay, Brand manufacturer, FuelType fuelType) {
+    public Car(String registrationNumber, BigDecimal rentalPricePerDay, Brand brand, FuelType fuelType) {
         this.registrationNumber = registrationNumber;
         this.rentalPricePerDay = rentalPricePerDay;
-        this.manufacturer = manufacturer;
+        this.brand = brand;
         this.fuelType = fuelType;
         this.isBooked = false;
     }
 
     public String getRegistrationNumber() {
         return registrationNumber;
-    }
-
-    public void setRegistrationNumber(String registrationNumber) {
-        this.registrationNumber = registrationNumber;
     }
 
     public BigDecimal getRentalPricePerDay() {
@@ -40,12 +36,12 @@ public class Car {
         this.rentalPricePerDay = rentalPricePerDay;
     }
 
-    public Brand getManufacturer() {
-        return manufacturer;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setManufacturer(Brand manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public FuelType getFuelType() {
@@ -72,19 +68,17 @@ public class Car {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return isBooked == car.isBooked && Objects.equals(registrationNumber, car.registrationNumber) &&
-                Objects.equals(rentalPricePerDay, car.rentalPricePerDay) &&
-                manufacturer == car.manufacturer
-                && fuelType == car.fuelType;
+        return Objects.equals(registrationNumber, car.registrationNumber);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(registrationNumber, rentalPricePerDay, manufacturer, fuelType, isBooked);
+        return Objects.hash(registrationNumber);
     }
 
     @Override
     public String toString() {
-        return "Car { registrationNumber = '%s' , rentalPricePerDay = %s , manufacturer = %s, fuelType = %s, booked = %b}".formatted(registrationNumber, rentalPricePerDay, manufacturer, fuelType, isBooked);
+        return "Car { registrationNumber = '%s' , rentalPricePerDay = %s , brand = %s, fuelType = %s, booked = %b}".formatted(registrationNumber, rentalPricePerDay, brand, fuelType, isBooked);
     }
 }

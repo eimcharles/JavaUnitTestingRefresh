@@ -2,7 +2,7 @@ package org.eimc.car;
 
 /**
  *      The Brand enum represents a list
- *      of supported car manufacturers.
+ *      of supported car brands.
  *
  *      It defines a fixed set of constant values
  *      that can be used to specify
