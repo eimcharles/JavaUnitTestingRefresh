@@ -1,6 +1,5 @@
 package org.eimc.emailValidator;
 
-import jdk.jfr.Enabled;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
@@ -14,7 +13,6 @@ class EmailValidatorTest {
 
     private final EmailValidator emailValidatorTest = new EmailValidator();
 
-
     /**
      *          Disabled prevents the test from running
      *          during a normal execution of the EmailValidatorTest class.
@@ -26,7 +24,7 @@ class EmailValidatorTest {
     @Test
     @Disabled
     @EnabledOnOs(OS.WINDOWS)
-    void canValidateCorrectEmail() {
+    void canValidateCorrectEmailFormat() {
 
         // GIVEN
         var testEmail = "c.eimer@me.com";
@@ -62,10 +60,11 @@ class EmailValidatorTest {
                     "charles, false",
                     "charles.com, false",
                     "eimer%me.com, false",
+                    ".com, false",
             }
 
     )
-    void canValidateAllCorrectEmails(String testEmail, boolean expected) {
+    void canValidateAllCorrectEmailFormats(String testEmail, boolean expected) {
 
         // WHEN
         var actualEmail = emailValidatorTest.test(testEmail);
