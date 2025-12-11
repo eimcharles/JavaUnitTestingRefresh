@@ -101,13 +101,13 @@ public class CarTest {
     }
 
     @Test
-    void constructorCanInitializeBookingStatus() {
+    void constructorCanInitializeCarBookedStatus() {
 
         // WHEN actualTestCar object created in setUp();
 
         // THEN
         assertThat(actualTestCar).as("The isBooked attribute must be initialized correctly by the constructor.")
-                .extracting(Car::isBooked)                          // Extracts the value of the 'isBooked' attribute
+                .extracting(Car::isCarBooked)                          // Extracts the value of the 'isBooked' attribute
                 .isEqualTo(false);
 
     }
@@ -244,15 +244,15 @@ public class CarTest {
     }
 
     @Test
-    void setBookedCanUpdateCarBookingStatus() {
+    void setBookedCanUpdateIsBookedStatus() {
 
         // GIVEN: actualTestCar is currently unbooked (false)
 
         // WHEN
-        actualTestCar.setBooked(true);
+        actualTestCar.setCarBooked(true);
 
         // THEN
-        assertThat(actualTestCar.isBooked()).as("The setBooked method should change the booking state to true.")
+        assertThat(actualTestCar.isCarBooked()).as("The setBooked method should change the booking state to true.")
                 .isTrue();
 
     }

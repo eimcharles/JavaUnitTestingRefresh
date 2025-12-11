@@ -13,7 +13,7 @@ public class Car {
     private BigDecimal rentalPricePerDay;
     private Brand brand;
     private FuelType fuelType;
-    private boolean isBooked;
+    private boolean isCarBooked;
 
 
     public Car(String registrationNumber, BigDecimal rentalPricePerDay, Brand brand, FuelType fuelType) {
@@ -21,7 +21,7 @@ public class Car {
         this.rentalPricePerDay = rentalPricePerDay;
         this.brand = brand;
         this.fuelType = fuelType;
-        this.isBooked = false;
+        this.isCarBooked = false;
     }
 
     public String getRegistrationNumber() {
@@ -56,12 +56,12 @@ public class Car {
 
     public boolean isGasoline() { return this.fuelType == FuelType.GASOLINE; }
 
-    public boolean isBooked() {
-        return isBooked;
+    public boolean isCarBooked() {
+        return isCarBooked;
     }
 
-    public void setBooked(boolean booked) {
-        this.isBooked = booked;
+    public void setCarBooked(boolean carBooked) {
+        this.isCarBooked = carBooked;
     }
 
     @Override
@@ -79,6 +79,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car { registrationNumber = '%s' , rentalPricePerDay = %s , brand = %s, fuelType = %s, booked = %b}".formatted(registrationNumber, rentalPricePerDay, brand, fuelType, isBooked);
+        return "Car { registrationNumber = '%s' , rentalPricePerDay = %s , brand = %s, fuelType = %s, booked = %b}".formatted(registrationNumber, rentalPricePerDay, brand, fuelType, isCarBooked);
     }
 }
