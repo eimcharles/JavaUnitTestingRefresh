@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class User {
 
-    private UUID userId;
+    private final UUID userId;
     private String name;
     private String lastName;
 
@@ -21,10 +21,6 @@ public class User {
 
     public UUID getUserId() {
         return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
     }
 
     public String getName() {
@@ -48,14 +44,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userId, user.userId) &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(lastName, user.lastName);
+        return Objects.equals(userId, user.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, name, lastName);
+        return Objects.hash(userId);
     }
 
     @Override

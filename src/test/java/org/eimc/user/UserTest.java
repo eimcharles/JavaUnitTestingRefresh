@@ -39,6 +39,7 @@ public class UserTest {
 
         // THEN
         assertThat(actualTestUser).isNotNull();
+
     }
 
     @Test
@@ -51,6 +52,7 @@ public class UserTest {
                 .as("The userId attribute must be initialized correctly by the constructor.")
                 .extracting(User::getUserId)          // Extracts the value of the 'userId' attribute
                 .isEqualTo(actualTestUserId);
+
     }
 
     @Test
@@ -64,6 +66,20 @@ public class UserTest {
         // THEN
         assertThat(actualTestUser).as("Users with identical attributes are equal")
                 .isEqualTo(expectedTestUserCopy);
+
+    }
+
+    @Test
+    void equalsCanCheckEqualityWhenAttributesAreDifferentButIdIsIdentical(){
+
+        // GIVEN expectedDifferentUserId
+        User expectedDifferentUserId = new User(actualTestUserId, "Barry", "LeWhite");
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("Users with identical userId attributes are equal, even if other attributes are not identical")
+                .isEqualTo(expectedDifferentUserId);
 
     }
 
@@ -81,6 +97,23 @@ public class UserTest {
         // THEN
         assertThat(actualTestUserHashCode).as("If Users are equal, their hash codes must be equal")
                 .isEqualTo(expectedTestUserCopyHashCode);
+
+    }
+
+    @Test
+    void hashCodeCanCheckEqualityWhenAttributesAreDifferentButIdsAreIdentical(){
+
+        // GIVEN expectedTestUserCopy
+        User expectedTestUserCopy = new User(actualTestUserId, "Barry", "LeWhite");
+
+        // WHEN actualTestUser object created in setUp();
+        int actualTestUserHashCode = actualTestUser.hashCode();
+        int expectedTestUserCopyHashCode = expectedTestUserCopy.hashCode();
+
+        // THEN
+        assertThat(actualTestUserHashCode).as("Users with identical userId attributes are equal, even if other attributes are not identical, their hash codes must be equal")
+                .isEqualTo(expectedTestUserCopyHashCode);
+
     }
 
     @Test
