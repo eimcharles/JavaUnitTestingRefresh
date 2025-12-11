@@ -27,7 +27,7 @@ public class PasswordValidatorTest {
     void willFailIfPasswordIsEmpty(){
 
         // GIVEN
-        String testPassword = "  ";
+        var testPassword = "  ";
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
@@ -40,7 +40,7 @@ public class PasswordValidatorTest {
     void willFailIfPasswordDoesNotMeetMinimumLengthRequiredAfterTrimming(){
 
         // GIVEN
-        String testPassword = "  pass";
+        var testPassword = "  pass";
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
@@ -53,7 +53,7 @@ public class PasswordValidatorTest {
     void willFailIfPasswordDoesNotContainAtLeastOneDigit(){
 
         // GIVEN
-        String testPassword = "password";
+        var testPassword = "password";
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
@@ -66,7 +66,7 @@ public class PasswordValidatorTest {
     void willFailIfPasswordDoesNotContainAtLeastOneDigitSpecialCharacter(){
 
         // GIVEN
-        String testPassword = "password";
+        var testPassword = "password";
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
