@@ -76,7 +76,6 @@ public class CarTest {
 
     }
 
-
     @Test
     void constructorCanInitializeCarBrand(){
 
@@ -113,7 +112,6 @@ public class CarTest {
 
     }
 
-
     @Test
     void equalsCanCheckEqualityWhenAttributesAreIdentical() {
 
@@ -147,6 +145,7 @@ public class CarTest {
                 .isEqualTo(expectedTestCarWithSameRegistrationNumber);
 
     }
+
     @Test
     void equalsCanCheckEqualityWhenComparingACarToItself() {
 
@@ -191,7 +190,6 @@ public class CarTest {
                 .isNotEqualTo(expectedDifferentCar);
 
     }
-
 
     @Test
     void equalsCanCheckInequalityWhenComparingACarToNull() {
@@ -244,7 +242,6 @@ public class CarTest {
                 .isEqualTo(expectedTestCarCopyHashCode);
 
     }
-
 
     @Test
     void setBookedCanUpdateCarBookingStatus() {

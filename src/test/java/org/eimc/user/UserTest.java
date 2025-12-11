@@ -70,7 +70,7 @@ public class UserTest {
     }
 
     @Test
-    void equalsCanCheckEqualityWhenAttributesAreDifferentButIdIsIdentical(){
+    void equalsCanCheckEqualityWhenAttributesAreDifferentButUserIdAreIdentical(){
 
         // GIVEN expectedDifferentUserId
         User expectedDifferentUserId = new User(actualTestUserId, "Barry", "LeWhite");
@@ -83,6 +83,44 @@ public class UserTest {
 
     }
 
+    @Test
+    void equalsCanCheckInequalityWhenComparingAUserToDifferentUser(){
+
+        // GIVEN expectedDifferentUser
+        User expectedDifferentUser = new User(UUID.randomUUID(), "Barry", "LeWhite");
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("Different Users should not be equal")
+                .isNotEqualTo(expectedDifferentUser);
+
+    }
+
+    @Test
+    void equalsCanCheckEqualityWhenComparingAUserToItself(){
+
+        // WHEN expectedTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("Identical User are equal to each other")
+                .isEqualTo(actualTestUser);
+
+    }
+
+    @Test
+    void equalsCanCheckInequalityWhenComparingAUserToNull(){
+
+        // GIVEN expectedTestNullUser
+        User expectedTestNullUser = null;
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("A User is not equal to a Null User object ")
+                .isNotEqualTo(expectedTestNullUser);
+
+    }
 
     @Test
     void hashCodeCanCheckEqualityWhenAttributesAreIdentical(){
@@ -113,45 +151,6 @@ public class UserTest {
         // THEN
         assertThat(actualTestUserHashCode).as("Users with identical userId attributes are equal, even if other attributes are not identical, their hash codes must be equal")
                 .isEqualTo(expectedTestUserCopyHashCode);
-
-    }
-
-    @Test
-    void equalsCanCheckEqualityWhenComparingAUserToItself(){
-
-        // WHEN expectedTestUser object created in setUp();
-
-        // THEN
-        assertThat(actualTestUser).as("Identical User are equal to each other")
-                .isEqualTo(actualTestUser);
-
-    }
-    
-    @Test
-    void equalsCanCheckInequalityWhenComparingAUserToDifferentUser(){
-
-        // GIVEN expectedDifferentUser
-        User expectedDifferentUser = new User(UUID.randomUUID(), "Barry", "LeWhite");
-
-        // WHEN actualTestUser object created in setUp();
-
-        // THEN
-        assertThat(actualTestUser).as("Different Users should not be equal")
-                .isNotEqualTo(expectedDifferentUser);
-
-    }
-
-    @Test
-    void equalsCanCheckInequalityWhenComparingAUserToNull(){
-
-        // GIVEN expectedTestNullUser
-        User expectedTestNullUser = null;
-
-        // WHEN actualTestUser object created in setUp();
-
-        // THEN
-        assertThat(actualTestUser).as("A User is not equal to a Null User object ")
-                .isNotEqualTo(expectedTestNullUser);
 
     }
 
