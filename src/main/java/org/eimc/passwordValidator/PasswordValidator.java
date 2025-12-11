@@ -4,9 +4,9 @@ import java.util.function.Predicate;
 
 public class PasswordValidator implements Predicate<String> {
 
-    public static final int MIN_PASSWORD_CHAR_LENGTH = 3;
-    public static final String CONTAINS_ONE_DIGIT = ".*\\d.*";
-    private static final String CONTAINS_SPECIAL_CHAR_REGEX = ".*[!@#$%^&*()_+=<>?/\\[\\]{}|].*";
+    private static final int MIN_PASSWORD_CHAR_LENGTH = 3;
+    private static final String CONTAINS_ONE_DIGIT = ".*\\d.*";
+    private static final String CONTAINS_SPECIAL_CHAR = ".*[!@#$%^&*()_+=<>?/\\[\\]{}|].*";
 
 
     @Override
@@ -28,7 +28,7 @@ public class PasswordValidator implements Predicate<String> {
         }
 
         // Must contain at least special character
-        if (!password.matches(CONTAINS_SPECIAL_CHAR_REGEX)){
+        if (!password.matches(CONTAINS_SPECIAL_CHAR)){
             return false;
         }
 
