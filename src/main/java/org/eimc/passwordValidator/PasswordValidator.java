@@ -2,7 +2,19 @@ package org.eimc.passwordValidator;
 
 import java.util.function.Predicate;
 
+/**
+ *      Example 3: PasswordValidator
+ * */
+
 public class PasswordValidator implements Predicate<String> {
+
+    /**
+     *      Checks if the email is non-null,
+     *      contains a minimum character length of
+     *      MIN_PASSWORD_CHAR_LENGTH, CONTAINS_ONE_DIGIT, and
+     *      CONTAINS_SPECIAL_CHAR and matches the
+     *      required email regex pattern.
+     */
 
     private static final int MIN_PASSWORD_CHAR_LENGTH = 3;
     private static final String CONTAINS_ONE_DIGIT = ".*\\d.*";

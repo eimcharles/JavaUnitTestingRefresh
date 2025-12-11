@@ -1,7 +1,7 @@
 package org.eimc.user;
 
 /**
- *      Domain class for User Object
+ *      Example 5: Domain class for User Object
  * */
 
 import java.util.Objects;

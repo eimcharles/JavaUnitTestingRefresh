@@ -6,6 +6,17 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
+/**
+ *      Unit testing example 3: PasswordValidatorTest
+ *
+ *      Test methods follow the Arrange-Act-Assert (AAA) pattern,
+ *      commonly labeled as Given-When-Then:
+ *
+ *      1. GIVEN (Arrange): Set up the required inputs, mocks, and expected outcomes.
+ *      2. WHEN (Act): Execute the method under test.
+ *      3. THEN (Assert): Verify the result using assertions (AssertJ).
+ */
+
 public class PasswordValidatorTest {
 
     private final PasswordValidator passwordValidatorTest = new PasswordValidator();

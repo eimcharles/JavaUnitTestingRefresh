@@ -12,11 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.*;
 
 /**
+ *      Unit testing example 1: CalculatorTest
+ *
  *      Test methods follow the Arrange-Act-Assert (AAA) pattern,
  *      commonly labeled as Given-When-Then:
  *
  *      1. GIVEN (Arrange): Set up the required inputs, mocks, and expected outcomes.
- *      2. WHEN (Act): Execute the method under test..
+ *      2. WHEN (Act): Execute the method under test.
  *      3. THEN (Assert): Verify the result using assertions (JUnit or AssertJ).
  */
 
