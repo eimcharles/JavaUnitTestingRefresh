@@ -63,7 +63,7 @@ public class PasswordValidatorTest {
     }
 
     @Test
-    void willFailIfPasswordDoesNotContainAtLeastOneDigitSpecialCharacter(){
+    void willFailIfPasswordDoesNotContainAtLeastOneSpecialCharacter(){
 
         // GIVEN
         var testPassword = "password";
@@ -79,6 +79,7 @@ public class PasswordValidatorTest {
     @CsvSource(
 
             {
+                    // GIVEN
                     "pas, false",
                     "@, false",
                     "3, false",
@@ -90,7 +91,7 @@ public class PasswordValidatorTest {
                     "pass4word&, true",
             }
     )
-    void canValidatePasswordCharacters(String testPassword, boolean expected){
+    void canValidateRequiredPasswordCharacters(String testPassword, boolean expected){
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
