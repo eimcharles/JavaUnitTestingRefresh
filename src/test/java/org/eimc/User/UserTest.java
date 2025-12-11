@@ -1,5 +1,13 @@
 package org.eimc.User;
 
+import org.eimc.user.User;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.UUID;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 /**
  *      Unit testing example 5: UserTest
  *
@@ -12,4 +20,107 @@ package org.eimc.User;
  */
 
 public class UserTest {
+
+    User actualTestUser;
+    UUID actualTestUserId;
+
+    @BeforeEach
+    void setUp(){
+
+        // GIVEN
+        actualTestUserId = UUID.randomUUID();
+        actualTestUser = new User(actualTestUserId, "Jerry", "Leblond");
+
+    }
+
+    @Test
+    void constructorCanInitializeUserObject(){
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).isNotNull();
+    }
+
+    @Test
+    void constructorCanInitializeUserId(){
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser)
+                .as("The userId attribute must be initialized correctly by the constructor.")
+                .extracting(User::getUserId)          // Extracts the value of the 'userId' attribute
+                .isEqualTo(actualTestUserId);
+    }
+
+    @Test
+    void equalsCanCheckEqualityWhenAttributesAreIdentical(){
+
+        // GIVEN expectedTestUserCopy
+        User expectedTestUserCopy = new User(actualTestUserId, "Jerry", "Leblond");
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("Users with identical attributes are equal")
+                .isEqualTo(expectedTestUserCopy);
+
+    }
+
+
+    @Test
+    void hashCodeCanCheckEqualityWhenAttributesAreIdentical(){
+
+        // GIVEN expectedTestUserCopy
+        User expectedTestUserCopy = new User(actualTestUserId, "Jerry", "Leblond");
+
+        // WHEN actualTestUser object created in setUp();
+        int actualTestUserHashCode = actualTestUser.hashCode();
+        int expectedTestUserCopyHashCode = expectedTestUserCopy.hashCode();
+
+        // THEN
+        assertThat(actualTestUserHashCode).as("If users are equal, their hash codes must be equal")
+                .isEqualTo(expectedTestUserCopyHashCode);
+    }
+
+    @Test
+    void equalsCanCheckEqualityWhenComparingAUserToItself(){
+
+        // WHEN expectedTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("Identical User are equal to each other")
+                .isEqualTo(actualTestUser);
+
+    }
+    
+    @Test
+    void equalsCanCheckInequalityWhenComparingAUserToDifferentUser(){
+
+        // GIVEN expectedDifferentUser
+        User expectedDifferentUser = new User(UUID.randomUUID(), "Barry", "LeWhite");
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("Different Users should not be equal")
+                .isNotEqualTo(expectedDifferentUser);
+
+    }
+
+    @Test
+    void equalsCanCheckInequalityWhenComparingAUserToNull(){
+
+        // GIVEN expectedTestNullUser
+        User expectedTestNullUser = null;
+
+        // WHEN actualTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("A User is not equal to a Null User object ")
+                .isNotEqualTo(expectedTestNullUser);
+
+    }
+
 }
