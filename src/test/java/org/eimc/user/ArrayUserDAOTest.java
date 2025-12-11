@@ -1,4 +1,4 @@
-package org.eimc.User;
+package org.eimc.user;
 
 public class ArrayUserDAOTest {
 }

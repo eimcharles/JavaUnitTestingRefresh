@@ -1,6 +1,5 @@
-package org.eimc.User;
+package org.eimc.user;
 
-import org.eimc.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
