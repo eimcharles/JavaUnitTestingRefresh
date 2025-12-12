@@ -70,6 +70,17 @@ public class UserTest {
     }
 
     @Test
+    void equalsCanCheckEqualityWhenComparingAUserToItself(){
+
+        // WHEN expectedTestUser object created in setUp();
+
+        // THEN
+        assertThat(actualTestUser).as("Identical user are equal to each other")
+                .isEqualTo(actualTestUser);
+
+    }
+
+    @Test
     void equalsCanCheckEqualityWhenAttributesAreDifferentButUserIdAreIdentical(){
 
         // GIVEN expectedDifferentUserId
@@ -92,19 +103,8 @@ public class UserTest {
         // WHEN actualTestUser object created in setUp();
 
         // THEN
-        assertThat(actualTestUser).as("Different Users should not be equal")
+        assertThat(actualTestUser).as("Users with different userId should not be equal")
                 .isNotEqualTo(expectedDifferentUser);
-
-    }
-
-    @Test
-    void equalsCanCheckEqualityWhenComparingAUserToItself(){
-
-        // WHEN expectedTestUser object created in setUp();
-
-        // THEN
-        assertThat(actualTestUser).as("Identical User are equal to each other")
-                .isEqualTo(actualTestUser);
 
     }
 
@@ -117,7 +117,7 @@ public class UserTest {
         // WHEN actualTestUser object created in setUp();
 
         // THEN
-        assertThat(actualTestUser).as("A User is not equal to a Null User object ")
+        assertThat(actualTestUser).as("A user is not equal to a null user object ")
                 .isNotEqualTo(expectedTestNullUser);
 
     }
@@ -133,7 +133,7 @@ public class UserTest {
         int expectedTestUserCopyHashCode = expectedTestUserCopy.hashCode();
 
         // THEN
-        assertThat(actualTestUserHashCode).as("If Users are equal, their hash codes must be equal")
+        assertThat(actualTestUserHashCode).as("If users are equal, their hash codes must be equal")
                 .isEqualTo(expectedTestUserCopyHashCode);
 
     }
