@@ -1,7 +1,12 @@
 package org.eimc.shippingCostCalculator;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
- *      Example 4: ShippingCostCalculatorTest
+ *      Unit testing example 4: ShippingCostCalculatorTest
  *
  *      Test methods follow the Arrange-Act-Assert (AAA) pattern,
  *      commonly labeled as Given-When-Then:
@@ -12,4 +17,48 @@ package org.eimc.shippingCostCalculator;
  * */
 
 public class ShippingCostCalculatorTest {
+
+    private ShippingCostCalculator actualTestShippingCostCalculator;
+
+    @BeforeEach
+    void setUp(){
+
+        // GIVEN
+        actualTestShippingCostCalculator = new ShippingCostCalculator();
+
+    }
+
+    @Test
+    void shouldChargeFiveDollarsForSmallPackage() {
+
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(0.5, "Local", false))
+                .isEqualTo(5.00);
+
+    }
+
+    @Test
+    void shouldChargeTenDollarsForLocalStandardShipping() {
+
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(2.0, "Local", false))
+                .isEqualTo(10.00);
+
+    }
+
+    @Test
+    void shouldChargeTwentyDollarsForInternationalShipping() {
+
+
+    }
+
+    @Test
+    void shouldAddExpressFee() {
+
+
+    }
 }
