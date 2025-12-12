@@ -255,7 +255,7 @@ public class BookingTest {
     void hashCodeCanCheckInequalityWhenComparingDifferentBookingIds() {
 
         // GIVEN expectedTestBookingWithIdenticalBookingId
-        Booking expectedTestBookingWithIdenticalBookingId = new Booking(UUID.randomUUID(),
+        Booking expectedTestBookingWithDifferentBookingId = new Booking(UUID.randomUUID(),
                 actualTestUser,
                 actualTestCar,
                 actualTestBookingTime);
@@ -263,7 +263,7 @@ public class BookingTest {
 
         // WHEN actualTestBooking object created in setUp();
         int actualTestBookingHashCode = actualTestBooking.hashCode();
-        int expectedTestBookingHashCode = expectedTestBookingWithIdenticalBookingId.hashCode();
+        int expectedTestBookingHashCode = expectedTestBookingWithDifferentBookingId.hashCode();
 
         // THEN
         assertThat(actualTestBookingHashCode).as("If bookings are not equal by userBookingID, even if their attributes are identical, then their hash codes must be different")
