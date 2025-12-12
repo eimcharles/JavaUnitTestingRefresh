@@ -40,6 +40,7 @@ public class CarTest {
                                 actualTestRentalPricePerDay,
                                 actualTestBrand,
                                 actualTestFuelType);
+
     }
 
     @Test
@@ -101,12 +102,12 @@ public class CarTest {
     }
 
     @Test
-    void constructorCanInitializeCarBookedStatus() {
+    void constructorCanInitializeIsCarBookedStatus() {
 
         // WHEN actualTestCar object created in setUp();
 
         // THEN
-        assertThat(actualTestCar).as("The isBooked attribute must be initialized correctly by the constructor.")
+        assertThat(actualTestCar).as("The isCarBooked attribute must be initialized correctly by the constructor.")
                 .extracting(Car::isCarBooked)                          // Extracts the value of the 'isBooked' attribute
                 .isEqualTo(false);
 
@@ -134,8 +135,8 @@ public class CarTest {
 
         // GIVEN expectedTestCarWithSameRegistrationNumber
         Car expectedTestCarWithSameRegistrationNumber = new Car(actualTestRegistrationNumber,
-                new BigDecimal("99.00"),
-                Brand.VOLKSWAGEN,
+                new BigDecimal("79.00"),
+                Brand.BMW,
                 FuelType.GASOLINE);
 
         // WHEN actualTestCar object created in setUp();
@@ -152,24 +153,38 @@ public class CarTest {
         // WHEN actualTestCar object created in setUp();
 
         // THEN
-        assertThat(actualTestCar).as("Identical Cars are equal to each other")
+        assertThat(actualTestCar).as("Identical cars are equal to each other")
                 .isEqualTo(actualTestCar);
 
     }
 
     @Test
-    void equalsCanCheckInequalityWhenComparingADifferentCarToDifferentRegistrationNumber() {
+    void equalsCanCheckInequalityWhenComparingACarToNull() {
+
+        // GIVEN expectedTestNullCar
+        Car expectedTestNullCar = null;
+
+        // WHEN actualTestCar object created in setUp();
+
+        // THEN
+        assertThat(actualTestCar).as("A car is not equal to a Null Car object")
+                .isNotEqualTo(expectedTestNullCar);
+
+    }
+
+    @Test
+    void equalsCanCheckInequalityWhenComparingDifferentCarsWithADifferentRegistrationNumber() {
 
         // GIVEN expectedDifferentCar
         Car expectedDifferentCar = new Car("123_2",
-                new BigDecimal("99.00"),
-                Brand.VOLKSWAGEN,
+                new BigDecimal("79.00"),
+                Brand.BMW,
                 FuelType.GASOLINE);
 
         // WHEN actualTestCar object created in setUp();
 
         // THEN
-        assertThat(actualTestCar).as("Cars should not be equal if their registration number is different, and their attributes are different")
+        assertThat(actualTestCar).as("Cars should not be equal if their registration number is different and their attributes are different")
                 .isNotEqualTo(expectedDifferentCar);
 
     }
@@ -186,22 +201,8 @@ public class CarTest {
         // WHEN actualTestCar object created in setUp();
 
         // THEN
-        assertThat(actualTestCar).as("Cars should not be equal if their registration number is different, but their attributes are identical")
+        assertThat(actualTestCar).as("Cars should not be equal if their registration number is different, and their attributes are identical")
                 .isNotEqualTo(expectedDifferentCar);
-
-    }
-
-    @Test
-    void equalsCanCheckInequalityWhenComparingACarToNull() {
-
-        // GIVEN expectedTestNullCar
-        Car expectedTestNullCar = null;
-
-        // WHEN actualTestCar object created in setUp();
-
-        // THEN
-        assertThat(actualTestCar).as("A Car is not equal to a Null Car object")
-                .isNotEqualTo(expectedTestNullCar);
 
     }
 
@@ -219,7 +220,7 @@ public class CarTest {
         int expectedTestCarCopyHashCode = expectedTestCarCopy.hashCode();
 
         // THEN
-        assertThat(actualTestCarHashCode).as("If Cars are equal, their hash codes must be equal")
+        assertThat(actualTestCarHashCode).as("If cars are equal, their hash codes must be equal")
                 .isEqualTo(expectedTestCarCopyHashCode);
 
     }
@@ -229,8 +230,8 @@ public class CarTest {
 
         // GIVEN expectedTestCarWithSameRegistrationNumber
         Car expectedTestCarWithSameRegistrationNumber = new Car(actualTestRegistrationNumber,
-                new BigDecimal("99.00"),
-                Brand.VOLKSWAGEN,
+                new BigDecimal("79.00"),
+                Brand.BMW,
                 FuelType.GASOLINE);
 
         // WHEN actualTestCar object created in setUp();
@@ -238,13 +239,32 @@ public class CarTest {
         int expectedTestCarCopyHashCode = expectedTestCarWithSameRegistrationNumber.hashCode();
 
         // THEN
-        assertThat(actualTestCarHashCode).as("Cars are equal by registration number, even if their attributes are different, then their hash codes must be equal")
+        assertThat(actualTestCarHashCode).as("if cars are equal by registration number, even if their attributes are different, then their hash codes must be equal")
                 .isEqualTo(expectedTestCarCopyHashCode);
 
     }
 
     @Test
-    void setBookedCanUpdateIsBookedStatus() {
+    void hashCodeCanCheckInequalityWhenRegistrationNumbersAreDifferent() {
+
+        // GIVEN expectedDifferentCar
+        Car expectedDifferentCar = new Car("123_2",
+                actualTestRentalPricePerDay,
+                actualTestBrand,
+                actualTestFuelType);
+
+        // WHEN
+        int actualTestCarHashCode = actualTestCar.hashCode();
+        int expectedTestCarCopyHashCode = expectedDifferentCar.hashCode();
+
+        // THEN
+        assertThat(actualTestCarHashCode).as("If cars are not equal by registration number, and their attributes are identical, their hash codes should be different")
+                .isNotEqualTo(expectedTestCarCopyHashCode);
+
+    }
+
+    @Test
+    void setBookedCanUpdateIsBookedStatusToBooked() {
 
         // GIVEN: actualTestCar is currently unbooked (false)
 
@@ -252,8 +272,23 @@ public class CarTest {
         actualTestCar.setCarBooked(true);
 
         // THEN
-        assertThat(actualTestCar.isCarBooked()).as("The setBooked method should change the booking state to true.")
+        assertThat(actualTestCar.isCarBooked()).as("The setCarBooked() method should change the isCarBooked state to true.")
                 .isTrue();
+
+    }
+
+    @Test
+    void setBookedCanUpdateIsBookedStatusToNotBooked() {
+
+        // GIVEN: actualTestCar is currently booked (true)
+        actualTestCar.setCarBooked(true);
+
+        // WHEN
+        actualTestCar.setCarBooked(false);
+
+        // THEN
+        assertThat(actualTestCar.isCarBooked()).as("The setCarBooked(false) method should change the isCarBooked state back to false.")
+                .isFalse();
 
     }
 
