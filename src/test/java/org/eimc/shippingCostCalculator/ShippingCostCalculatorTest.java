@@ -29,7 +29,7 @@ public class ShippingCostCalculatorTest {
     }
 
     @Test
-    void shouldChargeFiveDollarsForSmallPackage() {
+    void shouldChargeFiveDollarsForWeightLessThanOrEqualToOneKg() {
 
         // WHEN actualTestShippingCostCalculator object created in setUp();
 
@@ -40,7 +40,7 @@ public class ShippingCostCalculatorTest {
     }
 
     @Test
-    void shouldChargeTenDollarsForLocalStandardShipping() {
+    void shouldChargeTenDollarsForWeightLessThanOrEqualToFiveKgForLocalShipping() {
 
         // WHEN actualTestShippingCostCalculator object created in setUp();
 
@@ -51,7 +51,7 @@ public class ShippingCostCalculatorTest {
     }
 
     @Test
-    void shouldChargeTwentyDollarsForInternationalShipping() {
+    void shouldChargeTwentyDollarsForWeightLessThanOrEqualToFiveKgForInternationalShipping() {
         // WHEN actualTestShippingCostCalculator object created in setUp();
 
         // THEN
@@ -61,8 +61,27 @@ public class ShippingCostCalculatorTest {
     }
 
     @Test
-    void shouldAddExpressFee() {
+    void shouldChargeTwentyFiveDollarsForWeightGreaterThanOrEqualToFiveKgForInternationalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
 
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(6.0, "International", false))
+                .isEqualTo(25.00);
+
+    }
+
+    @Test
+    void shouldChargeFifteenDollarsForWeightGreaterThanFiveKgForLocalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(6.0, "Local", false))
+                .isEqualTo(15.00);
+
+    }
+
+    @Test
+    void shouldAddExpressFee() {
 
     }
 }

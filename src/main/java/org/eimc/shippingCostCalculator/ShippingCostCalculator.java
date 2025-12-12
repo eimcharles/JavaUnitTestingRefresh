@@ -24,9 +24,17 @@ public class ShippingCostCalculator {
 
         } else if (weightKg <= 5) {
 
+            // Weight <= 5kg
             // Check the region to be local and adjust basePrice -> 10$
-            // Check if region is not local adjust basePrice -> 20$
+            // Check if region is not local (International) adjust basePrice -> 20$
             basePrice = region.equalsIgnoreCase("Local") ? 10.00 : 20.00;
+
+        } else {
+
+            // Weight > 5kg
+            // Check the region to be local and adjust basePrice -> 15$
+            // Check if region is not local (International) adjust basePrice -> 25$
+            basePrice = region.equalsIgnoreCase("Local") ? 15.00 : 25.00;
 
         }
 
