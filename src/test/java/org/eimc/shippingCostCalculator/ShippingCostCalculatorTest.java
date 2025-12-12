@@ -81,7 +81,52 @@ public class ShippingCostCalculatorTest {
     }
 
     @Test
-    void shouldAddExpressFee() {
+    void shouldAddExpressFeeForExpressWhenWeightLessThanOneKgForLocalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(0.5, "Local", true))
+                .isEqualTo(20.00);
+
+    }
+
+    @Test
+    void shouldAddExpressFeeForExpressWhenWeightLessThanFiveKgForLocalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(4.0, "Local", true))
+                .isEqualTo(25.00);
+
+    }
+
+    @Test
+    void shouldAddExpressFeeForExpressWhenWeightLessThanFiveKgForInternationalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(4.0, "International", true))
+                .isEqualTo(35.00);
+
+    }
+
+    @Test
+    void shouldAddExpressFeeForExpressWhenWeightGreaterThanFiveKgForLocalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(6.0, "Local", true))
+                .isEqualTo(30.00);
+
+    }
+
+    @Test
+    void shouldAddExpressFeeForExpressWhenWeightGreaterThanFiveKgForInternationalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
+
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(6.0, "International", true))
+                .isEqualTo(40.00);
 
     }
 }

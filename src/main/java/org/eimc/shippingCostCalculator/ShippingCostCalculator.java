@@ -6,6 +6,8 @@ package org.eimc.shippingCostCalculator;
 
 public class ShippingCostCalculator {
 
+    private static final double EXPRESS_FEE = 15.00;
+
     /**
      *      ShippingCostCalculator determines shipping
      *      costs based on weight, destination region,
@@ -36,6 +38,11 @@ public class ShippingCostCalculator {
             // Check if region is not local (International) adjust basePrice -> 25$
             basePrice = region.equalsIgnoreCase("Local") ? 15.00 : 25.00;
 
+        }
+
+        // Add express fee
+        if (express) {
+            basePrice += EXPRESS_FEE;
         }
 
         return basePrice;
