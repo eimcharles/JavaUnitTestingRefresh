@@ -52,7 +52,11 @@ public class ShippingCostCalculatorTest {
 
     @Test
     void shouldChargeTwentyDollarsForInternationalShipping() {
+        // WHEN actualTestShippingCostCalculator object created in setUp();
 
+        // THEN
+        assertThat(actualTestShippingCostCalculator.calculate(2.0, "International", false))
+                .isEqualTo(20.00);
 
     }
 
