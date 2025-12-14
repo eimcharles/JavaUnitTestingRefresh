@@ -60,13 +60,13 @@ public class ArrayCarDAOTest {
     }
 
     @Test
-    void getCarReturnsCarsAndHasCorrectSizeAndContent(){
+    void getCarCanReturnCarsAndHasCorrectSizeAndContent(){
 
         // WHEN
-        Car[] expectedTestCars = actualTestArrayCarDAO.getCars();
+        Car[] actualTestCars = actualTestArrayCarDAO.getCars();
 
         // THEN
-        assertThat(expectedTestCars)
+        assertThat(actualTestCars)
                 .as("The getCars() method must return an array of 4 cars with the correct contents.")
                 .isNotNull()
                 .hasSize(4)
@@ -75,24 +75,25 @@ public class ArrayCarDAOTest {
     }
 
     @Test
-    void getCarsReturnsADefensiveCopyExternalModificationDoesNotAffectInternalState(){
+    void getCarsCanReturnADefensiveCopyExternalModificationDoesNotAffectInternalState(){
 
-        // GIVEN expectedTestCars
-        Car[] expectedTestCars = actualTestArrayCarDAO.getCars();
+        // GIVEN actualTestCars
+        Car[] actualTestCars = actualTestArrayCarDAO.getCars();
 
         // WHEN
-        expectedTestCars[0] = null;
+        actualTestCars[0] = null;
 
         // THEN
-        Car[] actualTestCarsAfterModification = actualTestArrayCarDAO.getCars();
-        assertThat(actualTestCarsAfterModification[0])
+        Car[] expectedTestCarsAfterModification = actualTestArrayCarDAO.getCars();
+
+        assertThat(expectedTestCarsAfterModification[0])
                 .as("The element at index 0 in actualTestArrayCarDAO state should not be null")
                 .isNotNull();
 
     }
 
     @Test
-    void updateCarThrowsCarNotFoundExceptionForCarNotFoundWhenRegistrationDoesntExist(){
+    void updateCarCanThrowCarNotFoundExceptionForCarNotFoundWhenRegistrationDoesntExist(){
 
         // GIVEN expectedNotFoundRegistrationNumber
         String expectedNotFoundRegistrationNumber = "123_6";
