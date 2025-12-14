@@ -75,7 +75,7 @@ public class ArrayCarDAOTest {
     }
 
     @Test
-    void getCarsCanReturnADefensiveCopyExternalModificationDoesNotAffectInternalState(){
+    void getCarsCanReturnADefensiveCopyAndExternalModificationDoesNotAffectInternalState(){
 
         // GIVEN actualTestCars
         Car[] actualTestCars = actualTestArrayCarDAO.getCars();
