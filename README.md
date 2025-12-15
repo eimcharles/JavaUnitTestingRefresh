@@ -15,15 +15,18 @@
 | Class Name                                                                                                     | Unit Test Class       | 
 |----------------------------------------------------------------------------------------------------------------|-----------------------|
 | [Booking.java](src/main/java/org/eimc/booking/Booking.java)                                                    | [BookingTest.java](src/test/java/org/eimc/booking/BookingTest.java)|
-| [Car.java](src/main/java/org/eimc/car/Car.java)                                                                | [CarTest.java](src/test/java/org/eimc/car/CarTest.java)| 
+| [Car.java](src/main/java/org/eimc/car/Car.java)                                                                | [CarTest.java](src/test/java/org/eimc/car/CarTest.java)|
+| [User.java](src/main/java/org/eimc/user/User.java)                                                             | [UserTest.java](src/test/java/org/eimc/user/UserTest.java)| 
+| [ArrayBookingDAO.java](src/main/java/org/eimc/booking/dao/ArrayBookingDAO.java)                                    | [ArrayBookingDAOTest.java](src/test/java/org/eimc/booking/ArrayBookingDAOTest.java)| 
+| [ArrayCarDAO.java](src/main/java/org/eimc/car/dao/ArrayCarDAO.java)                                                | [ArrayCarDAOTest.java](src/test/java/org/eimc/car/ArrayCarDAOTest.java)| 
+| [ArrayUserDAO.java](src/main/java/org/eimc/user/dao/ArrayUserDAO.java)                                             | [ArrayUserDAOTest.java](src/test/java/org/eimc/user/ArrayUserDAOTest.java)| 
 | [EmailValidator.java](src/main/java/org/eimc/emailValidator/EmailValidator.java)                               | [EmailValidatorTest.java](src/test/java/org/eimc/emailValidator/EmailValidatorTest.java)|
 | [PasswordValidator.java](src/main/java/org/eimc/passwordValidator/PasswordValidator.java)                      | [PasswordValidatorTest.java](src/test/java/org/eimc/passwordValidator/PasswordValidatorTest.java)| 
-| [ShippingCostCalulator.java](src/main/java/org/eimc/shippingCostCalculator/ShippingCostCalculator.java)         | [ShippingCostCalulatorTest.java](src/test/java/org/eimc/shippingCostCalculator/ShippingCostCalculatorTest.java)|
-| [User.java](src/main/java/org/eimc/user/User.java)                                                             | [UserTest.java](src/test/java/org/eimc/user/UserTest.java)| 
+| [ShippingCostCalulator.java](src/main/java/org/eimc/shippingCostCalculator/ShippingCostCalculator.java)        | [ShippingCostCalulatorTest.java](src/test/java/org/eimc/shippingCostCalculator/ShippingCostCalculatorTest.java)|
 
 --- 
 #### Examples Results of Unit Test using AssertJ:
-<img width="1385" height="627" alt="Screenshot 2025-12-12 at 2 20 26 PM" src="https://github.com/user-attachments/assets/7363f5bc-3ab1-4f64-a6c3-52c05a419188" />
+<img width="1212" height="751" alt="Screenshot 2025-12-15 at 6 00 48 PM" src="https://github.com/user-attachments/assets/fc9c4495-ca6f-479d-a0e0-70401ff73c9b" />
 
 --- 
   
