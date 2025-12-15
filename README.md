@@ -1,6 +1,10 @@
 ### Java Unit Testing, Test Driven Development refresher and learning ressource.
 
 #### This repository serves as a refresh on core Java unit testing principles using Junit framework, and a learning ressource for AssertJ and Mockito libraries.
+
+![AssertJ](https://img.shields.io/badge/Assertions-AssertJ-FFD166?logo=assertj&logoColor=black)
+![Mockito](https://img.shields.io/badge/Mocking-Mockito-FFD166?logo=jest&logoColor=black)
+
 --- 
 
 #### Test Driven Development
