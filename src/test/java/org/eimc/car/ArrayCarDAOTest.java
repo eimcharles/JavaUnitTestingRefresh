@@ -103,7 +103,16 @@ public class ArrayCarDAOTest {
                 expectedNotFoundRegistrationNumber,
                 new BigDecimal("49.00"), Brand.HONDA, FuelType.ELECTRIC);
 
-         // THEN
+
+        /**
+         *     Functional Programming:
+         *
+         *     Asserts that calling updateCar() with a non-existent car (within the lambda)
+         *     throws a CarNotFoundException, and verifies the exception message contains the
+         *     non-existent registration number.
+         * */
+
+        // THEN
         assertThatThrownBy(() -> actualTestArrayCarDAO.updateCar(expectedCarNotFound))
                 .isInstanceOf(CarNotFoundException.class)
                 .hasMessageContaining(expectedCarNotFound.getRegistrationNumber());

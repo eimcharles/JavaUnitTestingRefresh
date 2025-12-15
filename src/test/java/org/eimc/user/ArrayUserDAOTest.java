@@ -102,6 +102,13 @@ public class ArrayUserDAOTest {
 
         // WHEN actualTestArrayUserDAO object created in setUp();
 
+        /**
+         *     Functional Programming:
+         *
+         *     Asserts that calling getUserById() with a non-existent ID (within the lambda)
+         *     throws a UserNotFoundException, and verifies the exception message contains the missing ID.
+         * */
+
         // THEN
         assertThatThrownBy(() -> actualTestArrayUserDAO.getUserById(expectedNotFoundRandomTestTargetId))
                 .isInstanceOf(UserNotFoundException.class)
