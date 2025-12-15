@@ -37,7 +37,7 @@ public class ArrayBookingDAO implements BookingDAO {
         // Storage for available bookings
         this.bookingsDao = new Booking[MAX_CAPACITY];
 
-        Booking initialBooking =  new Booking(UUID.randomUUID(),
+        Booking initialBooking =  new Booking(UUID.fromString("8e397f1e-e7a4-4c39-8331-968a9ab3faef"),
                 new User(UUID.fromString("b10d126a-3608-4980-9f9c-aa179f5cebc3"), "Jerry", "LeBlond"),
                 new Car("123_4", new BigDecimal("49.00"), Brand.HONDA, FuelType.ELECTRIC),
                 LocalDateTime.now());
