@@ -93,7 +93,7 @@ public class ArrayCarDAOTest {
     }
 
     @Test
-    void updateCarCanThrowCarNotFoundExceptionForCarNotFoundWhenRegistrationDoesntExist(){
+    void updateCarCanThrowCarNotFoundExceptionWhenRegistrationDoesntExist(){
 
         // GIVEN expectedNotFoundRegistrationNumber
         String expectedNotFoundRegistrationNumber = "123_6";
