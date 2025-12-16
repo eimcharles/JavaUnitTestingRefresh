@@ -87,6 +87,8 @@ public class ArrayBookingDAOTest {
             {
 
                     "123_6",
+                    "123_$",
+                    "_",
                     "&",
                     "b10d126a-3608-4980-9f9c-aa179f5cebc3",
 
