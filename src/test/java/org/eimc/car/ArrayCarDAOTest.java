@@ -5,6 +5,8 @@ import org.eimc.exception.CarNotFoundException;
 import org.eimc.exception.UserNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
@@ -62,11 +64,13 @@ public class ArrayCarDAOTest {
     @Test
     void getCarsCanReturnCarsAndHasCorrectSizeAndContent(){
 
+        // GIVEN actualTestArrayCarDAO object created in setUp();
+
         // WHEN
-        Car[] actualTestCars = actualTestArrayCarDAO.getCars();
+        Car[] expectedTestCars = actualTestArrayCarDAO.getCars();
 
         // THEN
-        assertThat(actualTestCars)
+        assertThat(expectedTestCars)
                 .as("The getCars() method must return an array of 4 cars with the correct contents.")
                 .isNotNull()
                 .hasSize(4)
@@ -77,11 +81,11 @@ public class ArrayCarDAOTest {
     @Test
     void getCarsCanReturnADefensiveCopyAndExternalModificationDoesNotAffectInternalState(){
 
-        // GIVEN actualTestCars
-        Car[] actualTestCars = actualTestArrayCarDAO.getCars();
+        // GIVEN actualTestArrayCarDAO object created in setUp();
 
         // WHEN
-        actualTestCars[0] = null;
+        Car[] expectedTestCars = actualTestArrayCarDAO.getCars();
+        expectedTestCars[0] = null;
 
         // THEN
         Car[] expectedTestCarsAfterModification = actualTestArrayCarDAO.getCars();
@@ -92,17 +96,28 @@ public class ArrayCarDAOTest {
 
     }
 
-    @Test
-    void updateCarCanThrowCarNotFoundExceptionWhenRegistrationDoesntExist(){
+    @ParameterizedTest
+    @CsvSource(
 
-        // GIVEN expectedNotFoundRegistrationNumber
-        String expectedNotFoundRegistrationNumber = "123_6";
+            {
 
-        // WHEN
+                    "123_6",
+                    "123_$",
+                    "_",
+                    "&",
+                    "b10d126a-3608-4980-9f9c-aa179f5cebc3",
+
+            }
+
+    )
+    void updateCarCanThrowCarNotFoundExceptionWhenRegistrationDoesntExist(String expectedNotFoundRegistrationNumber){
+
+        // GIVEN actualTestArrayCarDAO object created in setUp();
+
+        // WHEN expectedCarNotFound
         Car expectedCarNotFound = new Car(
                 expectedNotFoundRegistrationNumber,
                 new BigDecimal("49.00"), Brand.HONDA, FuelType.ELECTRIC);
-
 
         /**
          *     Functional Programming:
