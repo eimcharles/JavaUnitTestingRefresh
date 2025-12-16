@@ -30,7 +30,7 @@
 
 --- 
 #### Examples Results of Unit Test using AssertJ:
-<img width="1231" height="783" alt="Screenshot 2025-12-16 at 2 12 04 PM" src="https://github.com/user-attachments/assets/2d9ed6b9-287e-4434-ad34-70b70f7b9e21" />
+<img width="1276" height="756" alt="Screenshot 2025-12-16 at 3 19 14 PM" src="https://github.com/user-attachments/assets/6a551336-6992-48ce-b0d9-a1c440ed8211" />
 
 --- 
   
