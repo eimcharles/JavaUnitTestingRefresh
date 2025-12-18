@@ -11,6 +11,8 @@ public interface CarDAO {
 
     Car[] getCars();
 
+    void addCar(Car Car);
+
     void updateCar(Car carToUpdate);
 
 }
