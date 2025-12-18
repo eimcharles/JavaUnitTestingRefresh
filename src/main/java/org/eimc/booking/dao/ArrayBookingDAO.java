@@ -1,7 +1,5 @@
 package org.eimc.booking.dao;
 
-
-
 import org.eimc.booking.Booking;
 import org.eimc.car.Brand;
 import org.eimc.car.Car;
@@ -27,9 +25,9 @@ public class ArrayBookingDAO implements BookingDAO {
     private final Booking[] bookingsDao;
 
     // Tracks the index of the next available slot in bookingsDao
-    private int nextAvailableIndex = 0;
+    private int numberOfBookings = 0;
 
-    // Defines the fixed, maximum size of the array storage.
+    // Defines a maximum size of the array storage.
     private static final int MAX_CAPACITY = 3;
 
     public ArrayBookingDAO() {
@@ -53,51 +51,57 @@ public class ArrayBookingDAO implements BookingDAO {
         return Arrays.copyOf(this.bookingsDao, this.bookingsDao.length);
     }
 
+
     @Override
     public void addBooking(Booking carBooking) {
 
-        // Checks if index of next available slot has reached length of array
-        if (this.nextAvailableIndex >= this.bookingsDao.length) {
-            throw new IllegalStateException(String.format("No more bookings space available - total bookings available:  %d", this.bookingsDao.length));
+        // Checks if index of numberOfBookings has reached MAX_CAPACITY
+        if (this.numberOfBookings >= this.bookingsDao.length) {
+            throw new IllegalStateException(String.format("No space available to add bookings - total bookings space available:  %d", this.bookingsDao.length));
         }
 
-        // Adds the carBooking into the slot that nextAvailableIndex points to
-        this.bookingsDao[this.nextAvailableIndex] = carBooking;
+        // Adds the carBooking into the index that numberOfBookings points to
+        this.bookingsDao[this.numberOfBookings] = carBooking;
 
-        // Moves the index to point to the following slot
-        this.nextAvailableIndex++;
-
+        // Moves the index to point to the following array index
+        this.numberOfBookings++;
     }
 
     @Override
-    public void updateBooking(Booking carBookingToUpdate) {
+    public void removeBooking(Booking carBookingToUpdate) {
 
-        // Holds the booking id
         UUID targetId = carBookingToUpdate.getUserBookingID();
 
-        boolean bookingFound = false;
+        // Check the booking state
+        if (carBookingToUpdate.isBookingActive()) {
+            throw new IllegalStateException("Booking state is active, unable to remove booking with id: " + targetId);
+        }
 
-        for (int i = 0; i < this.nextAvailableIndex; i++) {
+        for (int i = 0; i < this.numberOfBookings; i++) {
 
             Booking currentBooking = this.bookingsDao[i];
 
-            // Match the booking with the targetId
+            // Match the current booking with the targetId
             if (currentBooking != null && currentBooking.getUserBookingID().equals(targetId)) {
 
-                // Replace the old object reference with the new,
-                this.bookingsDao[i] = carBookingToUpdate;
+                // Shift all subsequent elements one position to the left to fill removed booking
+                for (int j = i; j < this.numberOfBookings - 1; j++) {
+                    this.bookingsDao[j] = this.bookingsDao[j + 1];
+                }
 
-                // booking found
-                bookingFound = true;
+                // Nullify the last position
+                bookingsDao[numberOfBookings - 1] = null;
 
-                break;
+                // Decrement numberOfBookings
+                numberOfBookings--;
+
+                // Booking found and removed
+                return;
             }
         }
 
-        // booking not found
-        if (!bookingFound) {
-            throw new BookingNotFoundException(targetId);
-        }
+        // Booking not found
+        throw new BookingNotFoundException(targetId);
 
     }
 
