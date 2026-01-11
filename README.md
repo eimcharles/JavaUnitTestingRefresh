@@ -5,6 +5,8 @@
 ![AssertJ](https://img.shields.io/badge/Assertions-AssertJ-FFD166?logo=assertj&logoColor=black)
 ![Mockito](https://img.shields.io/badge/Mocking-Mockito-FFD166?logo=jest&logoColor=black)
 
+#### [Java Unit Testing Learning resource / certificate](https://amigoscode.com/certificates/e9b461b0-b904-4222-a206-595920c4d607)
+
 --- 
 
 #### Test Driven Development
