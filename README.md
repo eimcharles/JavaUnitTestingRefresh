@@ -29,6 +29,7 @@
 | [EmailValidator.java](src/main/java/org/eimc/emailValidator/EmailValidator.java)                               | [EmailValidatorTest.java](src/test/java/org/eimc/emailValidator/EmailValidatorTest.java)|
 | [PasswordValidator.java](src/main/java/org/eimc/passwordValidator/PasswordValidator.java)                      | [PasswordValidatorTest.java](src/test/java/org/eimc/passwordValidator/PasswordValidatorTest.java)| 
 | [ShippingCostCalulator.java](src/main/java/org/eimc/shippingCostCalculator/ShippingCostCalculator.java)        | [ShippingCostCalulatorTest.java](src/test/java/org/eimc/shippingCostCalculator/ShippingCostCalculatorTest.java)|
+| [StudentsExample.java](src/main/java/org/eimc/student/StudentsExample.java)        | [StudentsExampleTest.java](src/test/java/org/eimc/student/StudentsExampleTest.java)|
 
 --- 
 #### Examples Results of Unit Test using AssertJ:
