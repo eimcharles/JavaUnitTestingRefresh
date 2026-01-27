@@ -1,4 +1,8 @@
 package org.eimc.student;
 
-public class Student {
-}
+public record Student (
+
+        String name,
+        int score
+
+) { }
