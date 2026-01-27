@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ExampleOne {
+public class StudentsExample {
 
     /// Get letter grade
     public String getGrade(int score) {

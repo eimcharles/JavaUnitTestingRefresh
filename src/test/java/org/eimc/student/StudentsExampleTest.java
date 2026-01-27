@@ -20,9 +20,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *      3. THEN (Assert): Verify the result using assertions (AssertJ).
  * */
 
-class ExampleOneTest {
+class StudentsExampleTest {
 
-    private final ExampleOne testExample = new ExampleOne();
+    private final StudentsExample testExample = new StudentsExample();
 
     @ParameterizedTest
     @CsvSource({
