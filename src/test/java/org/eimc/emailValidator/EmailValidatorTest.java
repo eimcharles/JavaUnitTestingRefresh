@@ -1,5 +1,6 @@
 package org.eimc.emailValidator;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
@@ -22,7 +23,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class EmailValidatorTest {
 
-    private final EmailValidator emailValidatorTest = new EmailValidator();
+    private EmailValidator emailValidatorTest;
+
+    /**
+     *      Life cycle callbacks enable
+     *      the setting up and tearing
+     *      down of tests
+     *
+     *      Before each runs before
+     *      every test.
+     * */
+
+    @BeforeEach
+    void setUp() {
+
+        emailValidatorTest = new EmailValidator();
+
+    }
 
     /**
      *          The Disabled annotation prevents the test from running
