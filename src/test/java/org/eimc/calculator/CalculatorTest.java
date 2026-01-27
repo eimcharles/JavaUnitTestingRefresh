@@ -1,7 +1,6 @@
-package org.eimc.Calculator;
+package org.eimc.calculator;
 
 
-import org.eimc.calculator.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
