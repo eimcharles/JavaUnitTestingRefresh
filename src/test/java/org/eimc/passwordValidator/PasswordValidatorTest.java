@@ -38,7 +38,20 @@ public class PasswordValidatorTest {
     void willFailIfPasswordIsEmpty(){
 
         // GIVEN
-        var testPassword = "  ";
+        var testPassword = "";
+
+        // WHEN
+        var actualPassword = passwordValidatorTest.test(testPassword);
+
+        // THEN
+        assertThat(actualPassword).isFalse();
+    }
+
+    @Test
+    void willFailIfPasswordContainsEmptySpaces(){
+
+        // GIVEN
+        var testPassword = "   ";
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
@@ -51,7 +64,7 @@ public class PasswordValidatorTest {
     void willFailIfPasswordDoesNotMeetMinimumLengthRequiredAfterTrimming(){
 
         // GIVEN
-        var testPassword = "  pass";
+        var testPassword = "  pa";
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
@@ -77,7 +90,7 @@ public class PasswordValidatorTest {
     void willFailIfPasswordDoesNotContainAtLeastOneSpecialCharacter(){
 
         // GIVEN
-        var testPassword = "password";
+        var testPassword = "password1";
 
         // WHEN
         var actualPassword = passwordValidatorTest.test(testPassword);
@@ -110,6 +123,5 @@ public class PasswordValidatorTest {
         // THEN
         assertThat(actualPassword).isEqualTo(expected);
     }
-
 
 }
